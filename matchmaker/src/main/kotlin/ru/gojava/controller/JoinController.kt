@@ -10,8 +10,7 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 class JoinController {
 
-    @PostMapping(value = "matchmaker/join",
-            consumes = arrayOf(MediaType.APPLICATION_FORM_URLENCODED_VALUE))
+    @PostMapping(value = ["matchmaker/join"], consumes = [MediaType.APPLICATION_FORM_URLENCODED_VALUE])
     fun join(name: String) = print(name)
 
 }
