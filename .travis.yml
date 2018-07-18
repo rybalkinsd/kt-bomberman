@@ -1,6 +1,6 @@
 language: java
 
 jdk:
-  - oraclejdk9
+  - oraclejdk8
 
-script: cd matchmaker && ./gradlew assemble && ./gradlew check
+script: cd matchmaker && gradle assemble && gradle check
