@@ -12,13 +12,13 @@ import ru.gojava.service.MatchmakerImpl
 @SpringBootApplication
 class MatchmakerApp
 
+val beans = beans {
+    bean<MatchmakerImpl>()
+    bean<PlayersRepositoryImpl>()
+}
+
 fun main(args: Array<String>) {
     runApplication<MatchmakerApp>(*args) {
-        addInitializers(
-            beans {
-                bean<MatchmakerImpl>()
-                bean<PlayersRepositoryImpl>()
-            }
-        )
+        addInitializers(beans)
     }
 }

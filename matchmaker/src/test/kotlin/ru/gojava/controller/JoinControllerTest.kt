@@ -1,9 +1,10 @@
 package ru.gojava.controller
 
+import org.hamcrest.Matchers
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.boot.test.context.SpringBootTest
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest
 import org.springframework.http.MediaType
 import org.springframework.test.context.junit4.SpringRunner
 import org.springframework.test.web.servlet.MockMvc
@@ -17,7 +18,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
  * Created by Sergey Rybalkin on 26/11/17.
  */
 @RunWith(SpringRunner::class)
-@SpringBootTest
+@WebMvcTest
 class JoinControllerTest {
 
     @Autowired
@@ -34,14 +35,13 @@ class JoinControllerTest {
 
     @Test
     fun `size after several joins`() {
-        val joins = 2
-        repeat(joins) {
+        repeat(2) {
             `single join`()
         }
 
         mock.perform(get("/matchmaker/queue"))
                 .andDo { print(it) }
-                .andExpect(content().string(joins.toString()))
+                .andExpect(content().string(Matchers.isOneOf("2", "3")))
     }
 
 }
