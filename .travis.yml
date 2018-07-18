@@ -3,4 +3,4 @@ language: java
 jdk:
   - oraclejdk9
 
-script: cd matchmaker && gradle assemble && gradle check
+script: cd matchmaker && ./gradlew check
